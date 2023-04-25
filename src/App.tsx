@@ -1,22 +1,40 @@
 import "./App.css";
-import { useEffect } from "react";
-import { validateCredentials } from "./api/validateCredentials";
+import { LoginForm } from "./components/LoginForm";
+import { useState } from "react";
 
 function App() {
-  useEffect(() => {
-    async function testValidation() {
-      const username = "user1";
-      const password = "password1";
-      const isValid = await validateCredentials(username, password);
-      console.log(`Credentials are ${isValid ? "valid" : "invalid"}`);
-    }
+  // TEST VALIDATION -> RETURNS BOOLEAN
+  // useEffect(() => {
+  //   async function testValidation() {
+  //     const username = "user1";
+  //     const password = "password1";
+  //     const isValid = await validateCredentials(username, password);
+  //     console.log(`Credentials are ${isValid ? "valid" : "invalid"}`);
+  //   }
+  //   testValidation();
+  // }, []);
 
-    testValidation();
-  }, []);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
   return (
     <>
-      <h1>Hello World</h1>
+      <div>
+        {isLoggedIn ? (
+          <div>
+            <h1>Hello World</h1>
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+        ) : (
+          <LoginForm onLoginSuccess={handleLoginSuccess} />
+        )}
+      </div>
     </>
   );
 }
