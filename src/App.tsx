@@ -1,6 +1,7 @@
 import "./App.css";
 import { LoginForm } from "./components/LoginForm";
 import { useState } from "react";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   // TEST VALIDATION -> RETURNS BOOLEAN
@@ -28,7 +29,9 @@ function App() {
       <div>
         {isLoggedIn ? (
           <div>
-            <h1>Hello World</h1>
+            <SearchBar />
+            <p>Hello World</p>
+
             <button onClick={handleLogout}>Logout</button>
           </div>
         ) : (
