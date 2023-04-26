@@ -8,7 +8,9 @@ type Restaurant = {
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState<Restaurant[]>([]);
-  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant>();
+  const [selectedRestaurants, setSelectedRestaurants] = useState<Restaurant[]>(
+    []
+  );
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -45,8 +47,14 @@ const SearchBar = () => {
   };
 
   const handleSelect = (restaurant: Restaurant) => {
-    setSelectedRestaurant(restaurant);
     setSearchText(restaurant.name);
+  };
+
+  const handleAdd = (restaurant: Restaurant) => {
+    setSelectedRestaurants((prevRestaurants) => [
+      ...prevRestaurants,
+      restaurant,
+    ]);
   };
 
   const filteredSuggestions = suggestions.filter((suggestion) =>
@@ -63,29 +71,22 @@ const SearchBar = () => {
         onChange={handleChange}
         list="restaurant-suggestions"
       />
-      {searchText && (
-        <datalist id="restaurant-suggestions">
-          {filteredSuggestions.map((suggestion) => (
-            <option
-              key={suggestion.name}
-              value={suggestion.name}
-              onClick={() => {
-                handleSelect(suggestion);
-              }}
-            />
-          ))}
-        </datalist>
-      )}
+      <datalist id="restaurant-suggestions">
+        {filteredSuggestions.map((suggestion) => (
+          <option
+            key={suggestion.name}
+            value={suggestion.name}
+            onClick={() => {
+              handleSelect(suggestion);
+            }}
+          />
+        ))}
+      </datalist>
+      <button onClick={() => handleAdd({ name: searchText })}>Add</button>
 
-      <button
-        onClick={() => {
-          setSelectedRestaurant(filteredSuggestions[0]);
-        }}
-      >
-        Add
-      </button>
-
-      {selectedRestaurant && <Map restaurantName={selectedRestaurant.name} />}
+      {selectedRestaurants.map((restaurant, index) => (
+        <Map key={index} restaurantName={restaurant.name} />
+      ))}
 
       {error && <div>{error}</div>}
     </div>
