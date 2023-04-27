@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Map from "./Map";
 
 type Restaurant = {
+  id: string;
   name: string;
 };
 
@@ -94,7 +95,10 @@ const SearchBar = () => {
       </datalist>
       <button
         onClick={() => {
-          handleAdd({ name: searchText });
+          handleAdd({
+            name: searchText,
+            id: "",
+          });
           setSearchText("");
         }}
       >

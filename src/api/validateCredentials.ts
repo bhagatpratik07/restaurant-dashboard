@@ -1,5 +1,5 @@
 /**
- * Validates a username and password by checking against an Airtable database.
+ * Validates username and password by checking against an Airtable database.
  *
  * @param {string} username - The username to validate.
  * @param {string} password - The password to validate.
