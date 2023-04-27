@@ -67,6 +67,12 @@ const SearchBar = () => {
     ]);
   };
 
+  const handleDelete = (restaurant: Restaurant) => {
+    setSelectedRestaurants((prevRestaurants) =>
+      prevRestaurants.filter((r) => r.id !== restaurant.id)
+    );
+  };
+
   // Filter the list of restaurant suggestions based on the current input value
   const filteredSuggestions = suggestions.filter((suggestion) =>
     suggestion.name.toLowerCase().startsWith(searchText.toLowerCase())
@@ -106,7 +112,10 @@ const SearchBar = () => {
       </button>
 
       {selectedRestaurants.map((restaurant, index) => (
-        <Map key={index} restaurantName={restaurant.name} />
+        <>
+          <Map key={index} restaurantName={restaurant.name} />
+          <button onClick={() => handleDelete(restaurant)}>Delete</button>
+        </>
       ))}
 
       {error && <div>{error}</div>}
