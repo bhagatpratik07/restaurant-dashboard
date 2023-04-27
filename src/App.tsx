@@ -1,7 +1,10 @@
 import "./App.css";
 import { LoginForm } from "./components/LoginForm";
 import { useState } from "react";
-import SearchBar from "./components/SearchBar";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Bookmark from "./pages/Bookmark";
+import NavBar from "./components/NavBar";
 
 function App() {
   // TEST VALIDATION -> RETURNS BOOLEAN
@@ -29,7 +32,11 @@ function App() {
       <div>
         {isLoggedIn ? (
           <div>
-            <SearchBar />
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/bookmark" element={<Bookmark />} />
+            </Routes>
             <p>Hello World</p>
 
             <button onClick={handleLogout}>Logout</button>

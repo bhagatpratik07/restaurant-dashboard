@@ -7,7 +7,7 @@ const Map = ({ restaurantName }: Props) => {
 
   return (
     <>
-      <h1>Map</h1>
+      <h3>{restaurantName}</h3>
       <iframe
         width="250"
         height="250"
