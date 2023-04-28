@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Map from "./Map";
 import Cookies from "js-cookie";
+import React from "react";
+import "../styles/search.css";
 
 type Restaurant = {
   id: number;
@@ -104,6 +106,7 @@ const SearchBar = () => {
         value={searchText}
         onChange={handleChange}
         list="restaurant-suggestions"
+        className="search-input"
       />
       <datalist id="restaurant-suggestions">
         {filteredSuggestions.map((suggestion) => (
@@ -124,15 +127,16 @@ const SearchBar = () => {
           });
           setSearchText("");
         }}
+        className="search-button"
       >
         Add
       </button>
 
       {selectedRestaurants.map((restaurant, index) => (
-        <>
-          <Map key={Date.now() + index} restaurantName={restaurant.name} />
+        <React.Fragment>
+          <Map key={`map-${restaurant.id}`} restaurantName={restaurant.name} />
           <button onClick={() => handleDelete(restaurant.id)}>Remove</button>
-        </>
+        </React.Fragment>
       ))}
 
       {error && <div>{error}</div>}

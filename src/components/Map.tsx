@@ -13,6 +13,7 @@ const Map = ({ restaurantName }: Props) => {
 
   const handleBookmarkClick = () => {
     addMapToBookmarks(mapUrl);
+    alert("map added to bookmarks");
     //console.log("added to bookmarks");
   };
 
@@ -28,6 +29,8 @@ const Map = ({ restaurantName }: Props) => {
             style={{ border: 0 }}
             allowFullScreen
           ></iframe>
+
+          {/* <embed src={mapUrl} width="450" height="250" /> */}
           <button onClick={handleBookmarkClick}>Bookmark</button>
         </>
       ) : (

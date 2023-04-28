@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Bookmark from "./pages/Bookmark";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,21 +19,25 @@ function App() {
   };
   return (
     <>
-      <div>
-        {isLoggedIn ? (
-          <div>
+      {isLoggedIn ? (
+        <div className="container">
+          <div className="navbar">
             <NavBar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/bookmark" element={<Bookmark />} />
-            </Routes>
-
+          </div>
+          <div className="content">
+            <div>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/bookmark" element={<Bookmark />} />
+              </Routes>
+            </div>
             <button onClick={handleLogout}>Logout</button>
           </div>
-        ) : (
-          <LoginForm onLoginSuccess={handleLoginSuccess} />
-        )}
-      </div>
+        </div>
+      ) : (
+        <LoginForm onLoginSuccess={handleLoginSuccess} />
+      )}
+      <Footer />
     </>
   );
 }

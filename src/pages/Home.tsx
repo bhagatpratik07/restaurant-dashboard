@@ -1,9 +1,10 @@
 import SearchBar from "../components/SearchBar";
+import "../styles/Home.css";
 
 function Home() {
   return (
     <>
-      <h1>Home Page</h1>
+      <div className="heading">Home Page</div>
       <SearchBar />
     </>
   );

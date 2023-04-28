@@ -1,11 +1,15 @@
 import { NavLink } from "react-router-dom";
+import "../styles/nav.css";
 
 function NavBar() {
   return (
-    <>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/bookmark">Bookmark</NavLink>
-    </>
+    <nav>
+      <h1>Dashboard</h1>
+      <NavLink to="/">Home Page</NavLink>
+      <NavLink to="/bookmark">
+        Bookmarked <br /> Restaurant
+      </NavLink>
+    </nav>
   );
 }
 

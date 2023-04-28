@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { validateCredentials } from "../api/validateCredentials";
 import Cookies from "js-cookie";
+import "../styles/loginform.css";
 
 type LoginFormProps = {
   onLoginSuccess: () => void;
@@ -27,6 +28,7 @@ export const LoginForm = ({ onLoginSuccess }: LoginFormProps) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
+        <h1>Login</h1>
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -44,10 +46,10 @@ export const LoginForm = ({ onLoginSuccess }: LoginFormProps) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
+      {error && <div style={{ color: "red", fontWeight: "bold" }}>{error}</div>}
       <div>
         <button type="submit">Login</button>
       </div>
-      {error && <div>{error}</div>}
     </form>
   );
 };

@@ -10,7 +10,7 @@ const Bookmark = () => {
 
   return (
     <div>
-      <h1>Bookmark</h1>
+      <h1>Bookmarks</h1>
       {bookmarkedMaps.map((mapUrl) => (
         <>
           <iframe
@@ -21,6 +21,10 @@ const Bookmark = () => {
             style={{ border: 0 }}
             allowFullScreen
           ></iframe>
+          {/* 
+          <object data={mapUrl} type=""></object> */}
+          {/* 
+          <embed src={mapUrl} width="450" height="250" /> */}
           <button onClick={() => handleRemoveClick(mapUrl)}>remove</button>
         </>
       ))}
