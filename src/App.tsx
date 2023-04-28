@@ -7,17 +7,6 @@ import Bookmark from "./pages/Bookmark";
 import NavBar from "./components/NavBar";
 
 function App() {
-  // TEST VALIDATION -> RETURNS BOOLEAN
-  // useEffect(() => {
-  //   async function testValidation() {
-  //     const username = "user1";
-  //     const password = "password1";
-  //     const isValid = await validateCredentials(username, password);
-  //     console.log(`Credentials are ${isValid ? "valid" : "invalid"}`);
-  //   }
-  //   testValidation();
-  // }, []);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLoginSuccess = () => {
@@ -37,7 +26,6 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/bookmark" element={<Bookmark />} />
             </Routes>
-            <p>Hello World</p>
 
             <button onClick={handleLogout}>Logout</button>
           </div>
@@ -50,3 +38,14 @@ function App() {
 }
 
 export default App;
+
+// TEST VALIDATION -> RETURNS BOOLEAN
+// useEffect(() => {
+//   async function testValidation() {
+//     const username = "user1";
+//     const password = "password1";
+//     const isValid = await validateCredentials(username, password);
+//     console.log(`Credentials are ${isValid ? "valid" : "invalid"}`);
+//   }
+//   testValidation();
+// }, []);

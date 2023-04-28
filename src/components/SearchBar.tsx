@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Map from "./Map";
+import Cookies from "js-cookie";
 
 type Restaurant = {
-  id: string;
+  id: number;
   name: string;
 };
 
@@ -49,6 +50,20 @@ const SearchBar = () => {
     fetchRestaurants();
   }, []);
 
+  // Load selected restaurants and their maps from cookies on component mount
+  useEffect(() => {
+    const selectedRestaurantsCookie = Cookies.get("selectedRestaurants");
+    if (selectedRestaurantsCookie) {
+      const selectedRestaurants = JSON.parse(selectedRestaurantsCookie);
+      setSelectedRestaurants(selectedRestaurants);
+    }
+  }, []);
+
+  // Save selected restaurants and their maps to cookies whenever the selectedRestaurants state changes
+  useEffect(() => {
+    Cookies.set("selectedRestaurants", JSON.stringify(selectedRestaurants));
+  }, [selectedRestaurants]);
+
   // Handle changes to the input value
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
@@ -67,10 +82,12 @@ const SearchBar = () => {
     ]);
   };
 
-  const handleDelete = (restaurant: Restaurant) => {
-    setSelectedRestaurants((prevRestaurants) =>
-      prevRestaurants.filter((r) => r.id !== restaurant.id)
-    );
+  const handleDelete = (index: number) => {
+    setSelectedRestaurants((prevRestaurants) => {
+      const newRestaurants = [...prevRestaurants];
+      newRestaurants.splice(index, 1);
+      return newRestaurants;
+    });
   };
 
   // Filter the list of restaurant suggestions based on the current input value
@@ -103,7 +120,7 @@ const SearchBar = () => {
         onClick={() => {
           handleAdd({
             name: searchText,
-            id: "",
+            id: 0,
           });
           setSearchText("");
         }}
@@ -113,8 +130,8 @@ const SearchBar = () => {
 
       {selectedRestaurants.map((restaurant, index) => (
         <>
-          <Map key={index} restaurantName={restaurant.name} />
-          <button onClick={() => handleDelete(restaurant)}>Delete</button>
+          <Map key={Date.now() + index} restaurantName={restaurant.name} />
+          <button onClick={() => handleDelete(restaurant.id)}>Remove</button>
         </>
       ))}
 

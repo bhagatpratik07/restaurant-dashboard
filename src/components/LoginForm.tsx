@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { validateCredentials } from "../api/validateCredentials";
+import Cookies from "js-cookie";
 
 type LoginFormProps = {
   onLoginSuccess: () => void;
@@ -16,6 +17,7 @@ export const LoginForm = ({ onLoginSuccess }: LoginFormProps) => {
     const isValid = await validateCredentials(username, password);
 
     if (isValid) {
+      Cookies.set("loggedIn", "true");
       onLoginSuccess();
     } else {
       setError("Invalid username or password");
