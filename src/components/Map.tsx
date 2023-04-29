@@ -22,8 +22,8 @@ const Map = ({ restaurantName }: Props) => {
     <>
       {isLoggedIn ? (
         <div className="wrapper">
+          <h3>{restaurantName}</h3>
           <div className="map-container">
-            <h3>{restaurantName}</h3>
             <iframe
               className="map"
               width="250"

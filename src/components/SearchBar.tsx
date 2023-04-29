@@ -98,14 +98,13 @@ const SearchBar = () => {
   );
 
   return (
-    <div>
-      <div className="container">
-        <label htmlFor="restaurant-search" className="label">
-          Search for a restaurant{" "}
-        </label>
+    <div className="search-container">
+      <div className="search-section">
         <input
+          placeholder="Search a restaurant"
           type="text"
           id="restaurant-search"
+          required={true}
           value={searchText}
           onChange={handleChange}
           list="restaurant-suggestions"
@@ -114,6 +113,8 @@ const SearchBar = () => {
         <datalist id="restaurant-suggestions">
           {filteredSuggestions.map((suggestion) => (
             <option
+              className="search-box"
+              placeholder="Search"
               key={suggestion.name}
               value={suggestion.name}
               onClick={() => {
@@ -135,20 +136,24 @@ const SearchBar = () => {
           Add
         </button>
       </div>
+      <div className="search-result">
+        {selectedRestaurants.map((restaurant, index) => (
+          <React.Fragment>
+            <Map
+              key={`map-${restaurant.id}`}
+              restaurantName={restaurant.name}
+            />
+            <button
+              onClick={() => handleDelete(restaurant.id)}
+              className="remove-btn"
+            >
+              Remove
+            </button>
+          </React.Fragment>
+        ))}
 
-      {selectedRestaurants.map((restaurant, index) => (
-        <React.Fragment>
-          <Map key={`map-${restaurant.id}`} restaurantName={restaurant.name} />
-          <button
-            onClick={() => handleDelete(restaurant.id)}
-            className="remove-btn"
-          >
-            Remove
-          </button>
-        </React.Fragment>
-      ))}
-
-      {error && <div>{error}</div>}
+        {error && <div>{error}</div>}
+      </div>
     </div>
   );
 };

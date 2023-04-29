@@ -6,6 +6,10 @@
 }
 
 .map {
+  padding: 0;
   margin-bottom: 10px;
   margin-top: 10px;
+  border-radius: 1rem;
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
 }

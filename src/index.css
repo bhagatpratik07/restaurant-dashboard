@@ -4,7 +4,8 @@
 * {
   /* font-family: "Montserrat", sans-serif; */
   font-family: "Quicksand", sans-serif;
-  background: #fff8e8;
+  background: #fdf4f5;
+  color: #ba90c6;
 }
 
 button {
@@ -19,7 +20,7 @@ button {
   color: black;
   min-width: 64px;
   border-radius: 5px;
-  background-color: #f97b22;
+  background-color: #ffa703;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
   cursor: pointer;
   border: none;
