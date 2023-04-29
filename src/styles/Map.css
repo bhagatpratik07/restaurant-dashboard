@@ -19,11 +19,23 @@
   color: white;
   background-color: #ffa703;
   border-color: #ffa703;
+  cursor: pointer;
+}
+
+.bk-btn:hover {
+  color: white;
+  background-color: #e49d1a;
 }
 
 .rm-btn {
   color: red;
   border-color: red;
+  cursor: pointer;
+}
+
+.rm-btn:hover {
+  background-color: red;
+  color: white;
 }
 
 .wrapper-btns {

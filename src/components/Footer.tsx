@@ -3,7 +3,7 @@ export default function Footer() {
     <div>
       <div
         style={{
-          // position: "fixed",
+          position: "fixed",
           bottom: 0,
           left: 0,
           right: 0,

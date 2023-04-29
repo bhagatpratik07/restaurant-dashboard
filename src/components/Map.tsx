@@ -27,6 +27,7 @@ const Map = ({ restaurantName, deleteRestaurnts, id }: Props) => {
           <h3>{restaurantName}</h3>
           <div className="map-container">
             <iframe
+              width="50%"
               className="map"
               src={mapUrl}
               style={{ border: 0 }}

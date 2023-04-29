@@ -27,7 +27,7 @@ export const LoginForm = ({ onLoginSuccess }: LoginFormProps) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className="login-div">
         <h1>Login</h1>
         <label htmlFor="username">Username</label>
         <input
@@ -36,19 +36,24 @@ export const LoginForm = ({ onLoginSuccess }: LoginFormProps) => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      {error && <div style={{ color: "red", fontWeight: "bold" }}>{error}</div>}
-      <div>
-        <button type="submit">Login</button>
+
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        {error && (
+          <div style={{ color: "red", fontWeight: "bold" }}>{error}</div>
+        )}
+        <div>
+          <button type="submit" className="form-btn">
+            Login
+          </button>
+        </div>
       </div>
     </form>
   );

@@ -31,13 +31,17 @@ function App() {
                 <Route path="/bookmark" element={<Bookmark />} />
               </Routes>
             </div>
-            <button onClick={handleLogout}>Logout</button>
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
           </div>
         </div>
       ) : (
         <>
           <LoginForm onLoginSuccess={handleLoginSuccess} />
-          <Footer />
+          <div className="footer">
+            <Footer />
+          </div>
         </>
       )}
     </>

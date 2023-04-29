@@ -1,11 +1,15 @@
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin: 0 auto;
-  max-width: 400px;
   padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-div {
+  padding: 2rem;
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
 }
 
 form label {
@@ -16,13 +20,14 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-bottom: 3rem;
 }
 
 form input {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding: 8px;
+  padding: 0 0.5rem;
+  margin-top: 4px;
+  margin-bottom: 1.5rem;
+  height: 2.125rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
@@ -31,8 +36,22 @@ form input {
   border-color: rgb(105, 102, 102);
 }
 
+.form-btn {
+  margin-bottom: 2rem;
+  height: 2.125rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffa703;
+  cursor: pointer;
+}
+
 form button:hover {
-  background-color: #c34f26;
+  background-color: #ee9b00;
 }
 
 form div.error {
