@@ -3,9 +3,8 @@
 }
 
 nav {
-  /* position: fixed; */
   /* position: sticky; */
-  height: 700px;
+  height: 700rem;
   top: 0;
   left: 0;
   bottom: 0;

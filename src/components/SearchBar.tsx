@@ -99,43 +99,52 @@ const SearchBar = () => {
 
   return (
     <div>
-      <label htmlFor="restaurant-search">Search for a restaurant: </label>
-      <input
-        type="text"
-        id="restaurant-search"
-        value={searchText}
-        onChange={handleChange}
-        list="restaurant-suggestions"
-        className="search-input"
-      />
-      <datalist id="restaurant-suggestions">
-        {filteredSuggestions.map((suggestion) => (
-          <option
-            key={suggestion.name}
-            value={suggestion.name}
-            onClick={() => {
-              handleSelect(suggestion);
-            }}
-          />
-        ))}
-      </datalist>
-      <button
-        onClick={() => {
-          handleAdd({
-            name: searchText,
-            id: 0,
-          });
-          setSearchText("");
-        }}
-        className="search-button"
-      >
-        Add
-      </button>
+      <div className="container">
+        <label htmlFor="restaurant-search" className="label">
+          Search for a restaurant{" "}
+        </label>
+        <input
+          type="text"
+          id="restaurant-search"
+          value={searchText}
+          onChange={handleChange}
+          list="restaurant-suggestions"
+          className="search-input"
+        />
+        <datalist id="restaurant-suggestions">
+          {filteredSuggestions.map((suggestion) => (
+            <option
+              key={suggestion.name}
+              value={suggestion.name}
+              onClick={() => {
+                handleSelect(suggestion);
+              }}
+            />
+          ))}
+        </datalist>
+        <button
+          onClick={() => {
+            handleAdd({
+              name: searchText,
+              id: 0,
+            });
+            setSearchText("");
+          }}
+          className="search-button"
+        >
+          Add
+        </button>
+      </div>
 
       {selectedRestaurants.map((restaurant, index) => (
         <React.Fragment>
           <Map key={`map-${restaurant.id}`} restaurantName={restaurant.name} />
-          <button onClick={() => handleDelete(restaurant.id)}>Remove</button>
+          <button
+            onClick={() => handleDelete(restaurant.id)}
+            className="remove-btn"
+          >
+            Remove
+          </button>
         </React.Fragment>
       ))}
 

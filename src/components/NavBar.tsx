@@ -6,9 +6,7 @@ function NavBar() {
     <nav>
       <h1>Dashboard</h1>
       <NavLink to="/">Home Page</NavLink>
-      <NavLink to="/bookmark">
-        Bookmarked <br /> Restaurant
-      </NavLink>
+      <NavLink to="/bookmark">Bookmarked Restaurants</NavLink>
     </nav>
   );
 }

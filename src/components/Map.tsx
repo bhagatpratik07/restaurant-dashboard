@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Cookies from "js-cookie";
 import { MapContext } from "../context/MapContext";
+import "../styles/Map.css";
 
 type Props = {
   restaurantName: string;
@@ -20,19 +21,22 @@ const Map = ({ restaurantName }: Props) => {
   return (
     <>
       {isLoggedIn ? (
-        <>
-          <h3>{restaurantName}</h3>
-          <iframe
-            width="250"
-            height="250"
-            src={mapUrl}
-            style={{ border: 0 }}
-            allowFullScreen
-          ></iframe>
+        <div className="wrapper">
+          <div className="map-container">
+            <h3>{restaurantName}</h3>
+            <iframe
+              className="map"
+              width="250"
+              height="250"
+              src={mapUrl}
+              style={{ border: 0 }}
+              allowFullScreen
+            ></iframe>
 
-          {/* <embed src={mapUrl} width="450" height="250" /> */}
+            {/* <embed src={mapUrl} width="450" height="250" /> */}
+          </div>
           <button onClick={handleBookmarkClick}>Bookmark</button>
-        </>
+        </div>
       ) : (
         <>
           <div>Please Log In to view the map</div>

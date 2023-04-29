@@ -35,9 +35,11 @@ function App() {
           </div>
         </div>
       ) : (
-        <LoginForm onLoginSuccess={handleLoginSuccess} />
+        <>
+          <LoginForm onLoginSuccess={handleLoginSuccess} />
+          <Footer />
+        </>
       )}
-      <Footer />
     </>
   );
 }
