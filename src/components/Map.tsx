@@ -5,8 +5,10 @@ import "../styles/Map.css";
 
 type Props = {
   restaurantName: string;
+  id: number;
+  deleteRestaurnts: (id: number) => void;
 };
-const Map = ({ restaurantName }: Props) => {
+const Map = ({ restaurantName, deleteRestaurnts, id }: Props) => {
   const mapUrl = `https://datastudio.google.com/embed/reporting/430242fa-4162-4950-a984-824b3b355b3c/page/dQMwC?params={"ds2.name2":"${restaurantName}"}`;
 
   const { addMapToBookmarks } = useContext(MapContext);
@@ -26,16 +28,25 @@ const Map = ({ restaurantName }: Props) => {
           <div className="map-container">
             <iframe
               className="map"
-              width="250"
-              height="250"
               src={mapUrl}
               style={{ border: 0 }}
               allowFullScreen
             ></iframe>
-
-            {/* <embed src={mapUrl} width="450" height="250" /> */}
           </div>
-          <button onClick={handleBookmarkClick}>Bookmark</button>
+          <div className="wrapper-btns">
+            <button
+              className="bk-btn wrapper-btn"
+              onClick={handleBookmarkClick}
+            >
+              Bookmark
+            </button>
+            <button
+              className="rm-btn wrapper-btn"
+              onClick={() => deleteRestaurnts(id)}
+            >
+              Remove
+            </button>
+          </div>
         </div>
       ) : (
         <>

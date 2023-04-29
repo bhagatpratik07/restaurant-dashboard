@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { MapContext } from "../context/MapContext";
 import "../styles/Home.css";
+import "../styles/bookmark.css";
 
 const Bookmark = () => {
   const { bookmarkedMaps, removeMapFromBookmarks } = useContext(MapContext);
@@ -15,7 +16,9 @@ const Bookmark = () => {
       {bookmarkedMaps.map((mapUrl) => (
         <>
           <div className="wrapper">
+            {/* <h1>{restaurant.name}</h1> */}
             <iframe
+              className="map"
               key={mapUrl}
               width="250"
               height="250"
@@ -23,17 +26,13 @@ const Bookmark = () => {
               style={{ border: 0 }}
               allowFullScreen
             ></iframe>
+            <button
+              onClick={() => handleRemoveClick(mapUrl)}
+              className="removebtn"
+            >
+              remove
+            </button>
           </div>
-          {/* 
-          <object data={mapUrl} type=""></object> */}
-          {/* 
-          <embed src={mapUrl} width="450" height="250" /> */}
-          <button
-            onClick={() => handleRemoveClick(mapUrl)}
-            className="removebtn"
-          >
-            remove
-          </button>
         </>
       ))}
     </div>

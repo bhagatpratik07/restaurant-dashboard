@@ -142,13 +142,9 @@ const SearchBar = () => {
             <Map
               key={`map-${restaurant.id}`}
               restaurantName={restaurant.name}
+              deleteRestaurnts={() => handleDelete(restaurant.id)}
+              id={restaurant.id}
             />
-            <button
-              onClick={() => handleDelete(restaurant.id)}
-              className="remove-btn"
-            >
-              Remove
-            </button>
           </React.Fragment>
         ))}
 

@@ -5,26 +5,4 @@
   /* font-family: "Montserrat", sans-serif; */
   font-family: "Quicksand", sans-serif;
   background: #fdf4f5;
-  color: #ba90c6;
-}
-
-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 22px 8px;
-
-  font-weight: 500;
-  font-size: 0.9375rem;
-  line-height: 1.75;
-  color: black;
-  min-width: 64px;
-  border-radius: 5px;
-  background-color: #ffa703;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
-  cursor: pointer;
-  border: none;
-}
-button:hover {
-  background-color: #fbb034;
 }
