@@ -52,3 +52,23 @@ npm run dev
 ```
 
 Open the app in your browser at http://localhost:5173.
+
+## Live Demo
+
+You can also try the live demo of the app at https://bhagatpratik07.github.io/restaurant-dashboard/.
+
+## Login Details
+
+To use the app, you can use the following login details:
+
+Username: user1
+
+Password: password1
+
+## Screenshots
+
+Here are some screenshots of the Restaurant Dashboard app:
+
+![Login Page](<Screenshot (21).png>)
+
+![Dashboard](<Screenshot (24).png>)

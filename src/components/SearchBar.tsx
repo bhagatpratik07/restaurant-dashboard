@@ -19,7 +19,7 @@ const SearchBar = () => {
   );
   const [error, setError] = useState("");
 
-  // Fetch restaurant data from Airtable on component mount
+  //  Fetch restaurant data from Airtable on component mount
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
@@ -53,6 +53,9 @@ const SearchBar = () => {
   }, []);
 
   // Load selected restaurants and their maps from cookies on component mount
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+
   useEffect(() => {
     const selectedRestaurantsCookie = Cookies.get("selectedRestaurants");
     if (selectedRestaurantsCookie) {
@@ -83,6 +86,7 @@ const SearchBar = () => {
       restaurant,
     ]);
   };
+  // 1 , 2, 3 <-, 4, 5
 
   const handleDelete = (index: number) => {
     setSelectedRestaurants((prevRestaurants) => {
@@ -123,6 +127,7 @@ const SearchBar = () => {
             />
           ))}
         </datalist>
+
         <button
           onClick={() => {
             handleAdd({
@@ -137,7 +142,7 @@ const SearchBar = () => {
         </button>
       </div>
       <div className="search-result">
-        {selectedRestaurants.map((restaurant, index) => (
+        {selectedRestaurants.map((restaurant) => (
           <React.Fragment>
             <Map
               key={`map-${restaurant.id}`}
@@ -155,3 +160,64 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+
+// ****** INTERVIEW *******
+
+//       <AutoComplete data={functionFetch} decouncing={800} inputText={3}/>
+//         const debounce = (func, timeout = 800) => {
+//  let timer: Integer;
+//   return (...args: any) {
+//     clearTimeout(timer);
+//      timer = setTimeout(() => {
+//      func.apply(this, args);
+//    }, timeout);
+//   }
+// }
+// const processChange = debounce(() => handleChange());
+// const [stored, setStored] = useState([]);
+
+// useEffect(() => {
+//   if(searchText.length > 3){
+//     fetchRestaurantsOnCount();
+//   }
+// }, [searchText], )
+
+//  const fetchRestaurantsOnCount = () => {
+
+// }
+
+// function debounce(func, timeout = 300) {
+//   let timer;
+//   return (...args) => {
+//     clearTimeout(timer);
+//     timer = setTimeout(() => {
+//       func.apply(this, args);
+//     }, timeout);
+//   };
+// }
+// function saveInput() {
+//   console.log("Saving data");
+// }
+// const processChange = debounce(() => saveInput());
+// const [suggestions, setSuggestions] = useState([]);
+
+//   const storedSuggestions = () => {
+//     Cookies.set("storedValue", "McDonalds"); // we will replace mcdonalds to the desired value
+//   };
+
+//   useEffect(() => {
+//     const retrieveCookies = () => {
+//       const storedValue = Cookies.get("storedValue");
+//       if (storedValue) {
+//         // If the stored value exists, we will set the suggestions state directly
+//         setSuggestions([storedValue]); // it will be a list as mentioned in the interview
+//       }
+//     };
+
+//     retrieveCookies(); // Check if stored suggestions exist
+
+//     if (suggestions.length === 0) {
+//       // If stored suggestions are not available, fetch restaurants from Airtable
+//       fetchRestaurants();
+//     }
+//   }, [suggestions.length]);
